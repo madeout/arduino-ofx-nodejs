@@ -5,14 +5,17 @@
 #include "ofxJSON.h"
 
 #include "sardine.h"
+#include "sushi.h"
 
 #define HOST "localhost"
 #define PORT 8080
 #define TIMESPEED 500.0
 #define NOISEN 200.0
 #define AMPLI 350
-#define MARGE 300
+#define MARGE_X 300
+#define MARGE_Y 600
 #define NB_SARDINES 100
+#define NB_SUSHIS 10
 #define NB_COLORS 6
 
 //--------------------------------------------------------
@@ -39,9 +42,14 @@ class ofApp : public ofBaseApp {
 		char lastChar;
 		ofxJSONElement jsonEl;
 		std::string json;
+		int ping;
 
         ofColor palette[NB_COLORS];
 		Sardine sardines[NB_SARDINES];
+		Sushi sushis[NB_SUSHIS];
+
+
+		ofImage img;
 
 		ofVec2f quadVec[4];
 };

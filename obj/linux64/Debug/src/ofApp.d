@@ -328,7 +328,7 @@ obj/linux64/Debug/src/ofApp.o: src/ofApp.cpp src/ofApp.h \
  ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h \
  ../../../addons/ofxJSON/src/ofxJSON.h \
  ../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h \
- ../../../addons/ofxJSON/src/ofxJSONElement.h src/sardine.h
+ ../../../addons/ofxJSON/src/ofxJSONElement.h src/sardine.h src/sushi.h
 
 src/ofApp.h:
 
@@ -1025,3 +1025,5 @@ src/ofApp.h:
 ../../../addons/ofxJSON/src/ofxJSONElement.h:
 
 src/sardine.h:
+
+src/sushi.h:

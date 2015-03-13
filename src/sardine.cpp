@@ -2,22 +2,22 @@
 #include "ofApp.h"
 
 void Sardine::init(){
-    SPEED = ofRandom(0.0005, 0.0020);
-    X = int( ofRandom( -MARGE, ofGetWidth() + MARGE ) );
+    speed = ofRandom(0.0005, 0.0020);
+    x = int( ofRandom( -MARGE_X, ofGetWidth() + MARGE_X ) );
     colorId = int( ofRandom( NB_COLORS ) );
     pct = 0;
-    a = ofPoint( X, -MARGE );
-    d = ofPoint( X, ofGetHeight() + MARGE );
+    a = ofPoint( x, -MARGE_Y );
+    d = ofPoint( x, ofGetHeight() + MARGE_Y );
 }
 
 void Sardine::update() {
-    pct += SPEED;
+    pct += speed;
     if ( pct >= 1 ) {
         init();
     }
 
-    b = ofPoint( X + (ofNoise(X/NOISEN, -MARGE, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI , ofGetHeight()/3 );
-    c = ofPoint( X + (ofNoise(X/NOISEN, ofGetHeight()+MARGE, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI, 2*ofGetHeight()/3);
+    b = ofPoint( x + (ofNoise(x/NOISEN, -MARGE_Y, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI , ofGetHeight()/3 );
+    c = ofPoint( x + (ofNoise(x/NOISEN, ofGetHeight()+MARGE_Y, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI, 2*ofGetHeight()/3);
     for (int i=0; i<NBPOINTS; i++) {
         float pctN = pct + (i*PCTDIST);
         ofPoint p = ofBezierPoint(a,b,c,d, pctN);

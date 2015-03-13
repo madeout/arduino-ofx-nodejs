@@ -1,5 +1,8 @@
 #include "ofApp.h"
 
+#define PING_MIN 5
+#define PING_MAX 55
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(3, 54, 73);
@@ -27,10 +30,18 @@ void ofApp::setup(){
         sardines[i].pct = ofRandom(1);
     }
 
+    for (int i =0; i < NB_SUSHIS; i++){
+        sushis[i].init();
+        sushis[i].initSushi(i);
+        sushis[i].pct = i*1.0/NB_SUSHIS;
+        // sushis[i].SPEED = 0.005;
+    }
+
     quadVec[0] = ofVec2f(10,10);
     quadVec[1] = ofVec2f(500,10);
     quadVec[2] = ofVec2f(500,500);
     quadVec[3] = ofVec2f(10,500);
+
 }
 
 //--------------------------------------------------------------
@@ -45,27 +56,24 @@ void ofApp::update(){
         if(lastChar == '\n'){
             bool parsingSuccessful = jsonEl.parse( json );
             //std::cout << json << std::endl;
-            //std::cout << "parsingSuccessful: " << ofToString( parsingSuccessful ) << std::endl;
 
             if( parsingSuccessful ){
-                int ping = jsonEl[ "ping" ].asInt();
+                ping = jsonEl[ "ping" ].asInt();
                 cout << "ping: " << ofToString( ping ) << endl;
-
-                ofxOscMessage m;
-                m.setAddress( "/ping" );
-                m.addIntArg( ping );
-
-                // check sardine ID
-                /*
-
-                ping, ofGetHeight(),
-
-                if (ping == s.x) {
-
-                }
-                */
             }
             json = "";
+        }
+    }
+
+    for(int i = 0; i < NB_SUSHIS; i++) {
+        if(sushis[i].y > ofGetHeight()/2- 200 && sushis[i].y < ofGetHeight()/2 +200) {
+            // cout << "sushi in FISHING ZONE: " << ofToString( sushis[i].id ) << endl;
+             if( abs( ofMap( ping, PING_MIN, PING_MAX, ofGetWidth(), 0, false) - sushis[i].x ) < 20){
+                cout << "sushi catched : " << ofToString( sushis[i].id ) << endl;
+                ofxOscMessage m;
+                m.setAddress( "/sushiId" );
+                m.addIntArg( sushis[i].id );
+             }
         }
     }
 }
@@ -77,23 +85,32 @@ void ofApp::draw(){
 	//buf = "sending osc messages to " + string(HOST) + ":" + ofToString(PORT);
 	//ofDrawBitmapString(buf, 10, 20);
 
-    ofSetColor(0, 150);
+   ofSetColor(0, 150);
     ofSetLineWidth(10);
     ofNoFill();
     int height = ofGetHeight();
-    for (int x=-MARGE; x<ofGetWidth()+MARGE; x+=10) {
+    for (int x=-MARGE_X; x<ofGetWidth()+MARGE_X; x+=10) {
         ofBezier(
-            x, -MARGE,
-            x + (ofNoise(x/NOISEN, -MARGE, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI, height/3,
-            x + (ofNoise(x/NOISEN, height+MARGE, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI, 2*height/3,
-            x, height+MARGE
+            x, -MARGE_Y,
+            x + (ofNoise(x/NOISEN, -MARGE_Y, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI, height/3,
+            x + (ofNoise(x/NOISEN, height+MARGE_Y, ofGetFrameNum()/TIMESPEED)-.5)*AMPLI, 2*height/3,
+            x, height+MARGE_Y
         );
     }
+
 
     for (int i =0; i < NB_SARDINES; i++){
         sardines[i].update();
         sardines[i].draw(palette);
     }
+
+
+    for (int i =0; i < NB_SUSHIS; i++){
+        sushis[i].update();
+        sushis[i].draw();
+    }
+
+    /*
 
     ofImage theScreen; //declare variable
     theScreen.grabScreen(0,0,ofGetWidth(),ofGetHeight());
@@ -117,6 +134,7 @@ void ofApp::draw(){
     glVertex3f (quadVec[3].x, quadVec[3].y, 0.0);
     glEnd ();
     theScreen.unbind();
+    */
 }
 
 //--------------------------------------------------------------
