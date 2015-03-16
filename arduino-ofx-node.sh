@@ -5,7 +5,7 @@ REP=/home/pi/openFrameworks/apps/myApps/arduino-ofx-nodejs
 
 echo 'Launching OFX...'
 # launch OFX 
-2>/dev/null 1>/dev/null ${REP}/bin/arduino-ofx-nodejs &
+2>/dev/null 1>/dev/null su pi -c "${REP}/bin/arduino-ofx-nodejs" &
 
 echo 'Launching node server...'
 # launch node
