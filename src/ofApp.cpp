@@ -17,6 +17,9 @@ void ofApp::setup(){
 	// open an outgoing connection to HOST:PORT
 	sender.setup(HOST, PORT);
 
+
+	ofSetFullScreen(true);
+
 	//creating palette
 	palette[0] = ofColor::fromHex(0x69D2E7);
 	palette[1] = ofColor::fromHex(0xA7DBD8);
