@@ -18,9 +18,37 @@ void ofApp::setup(){
 	// open an outgoing connection to HOST:PORT
 	sender.setup(HOST, PORT);
 
-	// ofSetFullscreen(true);
+	// ofSetFullscreen(true)
 
-	image_names = {"concertauditorium.png", "conflcd.png", "contesanimes.png", "Depardieu.png", "Dessin.png", "ecoutextrait.png", "fetedeslumieres.png", "Fnac.png", "Henriette.png", "Herve.png", "Histoire PD.png", "lampedesign.png", "Linaguitare.png", "Maelle.png", "Magali.png", "mathieuboogaerts.png", "naissancedelyon.png", "offreterroir.png", "ONL.png", "parking.png", "pausegourmande.png", "Rencontrebibli.png", "revoltecanuts.png", "theatrecelestins.png", "Tourcrayon.png", "Tournoi Foot.png", "UGCopera.png", "villalyon.png", "Villeubanecovoit.png"}
+	image_names[0] = "concertauditorium.png";
+    image_names[1] = "conflcd.png";
+    image_names[2] = "contesanimes.png";
+    image_names[3] = "Depardieu.png";
+    image_names[4] = "Dessin.png";
+    image_names[5] = "ecoutextrait.png";
+    image_names[6] = "fetedeslumieres.png";
+    image_names[7] = "Fnac.png";
+    image_names[8] = "Henriette.png";
+    image_names[9] = "Herve.png";
+    image_names[10] = "Histoire PD.png";
+    image_names[11] = "lampedesign.png";
+    image_names[12] = "Linaguitare.png";
+    image_names[13] = "Maelle.png";
+    image_names[14] = "Magali.png";
+    image_names[15] = "mathieuboogaerts.png";
+    image_names[16] = "naissancedelyon.png";
+    image_names[17] = "offreterroir.png";
+    image_names[18] = "ONL.png";
+    image_names[19] = "parking.png";
+    image_names[20] = "pausegourmande.png";
+    image_names[21] = "Rencontrebibli.png";
+    image_names[22] = "revoltecanuts.png";
+    image_names[23] = "theatrecelestins.png";
+    image_names[24] = "Tourcrayon.png";
+    image_names[25] = "Tournoi Foot.png";
+    image_names[26] = "UGCopera.png";
+    image_names[27] = "villalyon.png";
+    image_names[28] = "Villeubanecovoit.png";
 
 	//creating palette
 	palette[0] = ofColor::fromHex(0x69D2E7);
