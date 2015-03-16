@@ -1,10 +1,9 @@
 #include "sushi.h"
-
 #include "ofMain.h"
 
-void Sushi::initSushi(int i) {
+void Sushi::initSushi(int i, std::string img_name) {
     id = i;
-    img.loadImage(ofToString(i+1)+"-0.png");
+    img.loadImage(img_name);
 }
 
 void Sushi::init(){

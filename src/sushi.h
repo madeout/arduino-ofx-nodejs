@@ -14,7 +14,7 @@ class Sushi
 {
     public:
         void init();
-        void initSushi(int i);
+        void initSushi(int i,  std::string img_name);
         void draw();
         void update();
         int id;

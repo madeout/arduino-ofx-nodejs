@@ -3,6 +3,7 @@
 #define PING_MIN 5
 #define PING_MAX 55
 
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(3, 54, 73);
@@ -17,8 +18,7 @@ void ofApp::setup(){
 	// open an outgoing connection to HOST:PORT
 	sender.setup(HOST, PORT);
 
-
-	ofSetFullscreen(true);
+	// ofSetFullscreen(true);
 
 	//creating palette
 	palette[0] = ofColor::fromHex(0x69D2E7);
@@ -33,11 +33,13 @@ void ofApp::setup(){
         sardines[i].pct = ofRandom(1);
     }
 
+    // sushis
     for (int i =0; i < NB_SUSHIS; i++){
         sushis[i].init();
-        sushis[i].initSushi(i);
+        std::string img_name = ofToString("sardines/"+image_names[i]);
+        cout << img_name << endl;
+        sushis[i].initSushi(i, img_name);
         sushis[i].pct = i*1.0/NB_SUSHIS;
-        // sushis[i].SPEED = 0.005;
     }
 
     quadVec[0] = ofVec2f(10,10);
@@ -63,19 +65,33 @@ void ofApp::update(){
             if( parsingSuccessful ){
                 ping = jsonEl[ "ping" ].asInt();
                 cout << "ping: " << ofToString( ping ) << endl;
+
             }
             json = "";
         }
     }
 
     for(int i = 0; i < NB_SUSHIS; i++) {
+
+
+        // sushi on screen
         if(sushis[i].y > ofGetHeight()/2- 200 && sushis[i].y < ofGetHeight()/2 +200) {
+
             // cout << "sushi in FISHING ZONE: " << ofToString( sushis[i].id ) << endl;
-             if( abs( ofMap( ping, PING_MIN, PING_MAX, ofGetWidth(), 0, false) - sushis[i].x ) < 20){
+
+            if( ping < PING_MIN && ping < PING_MAX ) {
+
+             // if( abs( ofMap( ping, PING_MIN, PING_MAX, ofGetWidth(), 0, false) - sushis[i].x ) < 20){
+
                 cout << "sushi catched : " << ofToString( sushis[i].id ) << endl;
-                ofxOscMessage m;
-                m.setAddress( "/sushiId" );
-                m.addIntArg( sushis[i].id );
+
+                ofxOscMessage mOSC;
+                mOSC.setAddress( "/sushi" );
+
+                // mOSC.addIntArg( sushis[i] );
+                mOSC.addStringArg( image_names[i] );
+
+                sender.sendMessage(mOSC);
              }
         }
     }

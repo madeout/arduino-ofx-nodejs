@@ -1,0 +1,50 @@
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/jquery.js"></script>
+<script>
+io = io.connect()
+
+// Emit ready event.
+io.emit('ready') 
+
+var colors = ["#69D2E7", "#A7DBD8", "#E0E4CC", "#F38630", "#FA6900"];
+
+var origin = new Date();
+
+// Listen for the talk event.
+io.on('sushi', function(data) {
+
+    var imgPath = "/images/"+data.sushi;
+    // console.log(imgPath);
+    // console.log(document.getElementById("sushi-img").src);
+
+    // change image
+    document.body.style.backgroundColor = "#A7DBD8";
+    if(document.getElementById("sushi-img").src != imgPath){
+        document.getElementById("sushi-img").src = imgPath
+    }
+
+    origin = new Date();
+
+})
+
+setInterval(function () {
+    var date2 = new Date(); // 5:00 PM
+    var diff = date2 - origin;
+    if(diff > 1000){
+        document.getElementById("sushi-img").src = "/images/wait.gif";
+        document.body.style.backgroundColor = "#FFF";
+    }
+}, 500);
+
+
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+</script>
+</head>
+<body>
+ <img id="sushi-img" src="/images/lampedesign.png" name="doc">
+</body>
