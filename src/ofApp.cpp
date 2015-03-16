@@ -18,7 +18,7 @@ void ofApp::setup(){
 	sender.setup(HOST, PORT);
 
 
-	ofSetFullScreen(true);
+	ofSetFullscreen(true);
 
 	//creating palette
 	palette[0] = ofColor::fromHex(0x69D2E7);
