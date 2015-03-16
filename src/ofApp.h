@@ -50,7 +50,7 @@ class ofApp : public ofBaseApp {
 
 		ofImage img;
 
-		std::string image_names[NB_SUSHIS] = {"concertauditorium.png", "conflcd.png", "contesanimes.png", "Depardieu.png", "Dessin.png", "ecoutextrait.png", "fetedeslumieres.png", "Fnac.png", "Henriette.png", "Herve.png", "Histoire PD.png", "lampedesign.png", "Linaguitare.png", "Maelle.png", "Magali.png", "mathieuboogaerts.png", "naissancedelyon.png", "offreterroir.png", "ONL.png", "parking.png", "pausegourmande.png", "Rencontrebibli.png", "revoltecanuts.png", "theatrecelestins.png", "Tourcrayon.png", "Tournoi Foot.png", "UGCopera.png", "villalyon.png", "Villeubanecovoit.png"};
+		std::string image_names[NB_SUSHIS];
 
 
 		ofVec2f quadVec[4];
