@@ -9,6 +9,6 @@ echo 'Launching OFX...'
 
 echo 'Launching node server...'
 # launch node
-node ${REP}/node-server/app.js < /dev/null &
+su pi -c "node ${REP}/node-server/app.js" < /dev/null &
 
 echo 'Launched'
