@@ -7,8 +7,8 @@
 #define NOISEN 200.0
 #define AMPLI 350
 #define MARGE_X 300
-#define MARGE_Y 5000
-#define SPEED 0.0005
+#define MARGE_Y 20000
+#define SPEED 0.00025
 
 class Sushi
 {

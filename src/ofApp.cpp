@@ -18,38 +18,36 @@ void ofApp::setup(){
 	// open an outgoing connection to HOST:PORT
 	sender.setup(HOST, PORT);
 
-    ofSetFullscreen(true);
+    // ofSetFullscreen(true);
     ofHideCursor();
 
-	image_names[0] = "concertauditorium.png";
+    image_names[0] = "concertauditorium.png";
     image_names[1] = "conflcd.png";
     image_names[2] = "contesanimes.png";
     image_names[3] = "Depardieu.png";
-    image_names[4] = "Dessin.png";
-    image_names[5] = "ecoutextrait.png";
-    image_names[6] = "fetedeslumieres.png";
-    image_names[7] = "Fnac.png";
-    image_names[8] = "Henriette.png";
-    image_names[9] = "Herve.png";
-    image_names[10] = "Histoire PD.png";
-    image_names[11] = "lampedesign.png";
-    image_names[12] = "Linaguitare.png";
-    image_names[13] = "Maelle.png";
-    image_names[14] = "Magali.png";
-    image_names[15] = "mathieuboogaerts.png";
-    image_names[16] = "naissancedelyon.png";
-    image_names[17] = "offreterroir.png";
-    image_names[18] = "ONL.png";
-    image_names[19] = "parking.png";
-    image_names[20] = "pausegourmande.png";
-    image_names[21] = "Rencontrebibli.png";
-    image_names[22] = "revoltecanuts.png";
-    image_names[23] = "theatrecelestins.png";
-    image_names[24] = "Tourcrayon.png";
-    image_names[25] = "Tournoi Foot.png";
-    image_names[26] = "UGCopera.png";
-    image_names[27] = "villalyon.png";
-    image_names[28] = "Villeubanecovoit.png";
+    image_names[4] = "ecoutextrait.png";
+    image_names[5] = "fetedeslumieres.png";
+    image_names[6] = "Fnac.png";
+    image_names[7] = "Henriette.png";
+    image_names[8] = "Herve.png";
+    image_names[9] = "Histoire-PD.png";
+    image_names[10] = "lampedesign.png";
+    image_names[11] = "Linaguitare.png";
+    image_names[12] = "Maelle.png";
+    image_names[13] = "Magali.png";
+    image_names[14] = "mathieuboogaerts.png";
+    image_names[15] = "naissancedelyon.png";
+    image_names[16] = "offreterroir.png";
+    image_names[17] = "ONL.png";
+    image_names[18] = "parking.png";
+    image_names[19] = "pausegourmande.png";
+    image_names[20] = "Rencontrebibli.png";
+    image_names[21] = "revoltecanuts.png";
+    image_names[22] = "theatrecelestins.png";
+    image_names[23] = "Tourcrayon.png";
+    image_names[24] = "UGCopera.png";
+    image_names[25] = "villalyon.png";
+    image_names[26] = "Villeubanecovoit.png";
 
 	//creating palette
 	palette[0] = ofColor::fromHex(0x69D2E7);
@@ -110,7 +108,7 @@ void ofApp::update(){
 
             // cout << "sushi in FISHING ZONE: " << ofToString( sushis[i].id ) << endl;
 
-            if( ping < PING_MIN && ping < PING_MAX ) {
+            if( ping > PING_MIN && ping < PING_MAX ) {
 
              // if( abs( ofMap( ping, PING_MIN, PING_MAX, ofGetWidth(), 0, false) - sushis[i].x ) < 20){
 
