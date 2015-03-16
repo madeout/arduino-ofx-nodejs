@@ -18,7 +18,7 @@ void ofApp::setup(){
 	// open an outgoing connection to HOST:PORT
 	sender.setup(HOST, PORT);
 
-    // ofSetFullscreen(true);
+    ofSetFullscreen(true);
     ofHideCursor();
 
     image_names[0] = "concertauditorium.png";
