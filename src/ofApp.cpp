@@ -110,7 +110,7 @@ void ofApp::draw(){
         sushis[i].draw();
     }
 
-
+    /*
 
     ofImage theScreen; //declare variable
     theScreen.grabScreen(0,0,ofGetWidth(),ofGetHeight());
@@ -121,6 +121,7 @@ void ofApp::draw(){
 
     ofSetColor(255);
     //theScreen.draw(ofGetMouseX(), ofGetMouseY());
+
 
     theScreen.bind();
     glBegin (GL_QUADS);
@@ -134,6 +135,7 @@ void ofApp::draw(){
     glVertex3f (quadVec[3].x, quadVec[3].y, 0.0);
     glEnd ();
     theScreen.unbind();
+    */
 
 }
 
